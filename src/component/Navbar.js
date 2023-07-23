@@ -5,6 +5,7 @@ import About from './About';
 
  function Navbar() {
   return (
+    <>
     <Router>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
@@ -52,6 +53,8 @@ import About from './About';
         <Route path="/about" element={<About />} />
       </Routes>
     </Router>
+    <br />
+    </>
   );
 };
 
