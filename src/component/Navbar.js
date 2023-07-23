@@ -1,7 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Home from './Home';
+import FreelanceJobs from './FreelanceJobs';
 import About from './About';
+import JobDetails from './JobDetails';
 
  function Navbar() {
   return (
@@ -9,12 +11,15 @@ import About from './About';
     <Router>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
-          <Link className="navbar-brand" to="/">Home</Link>
+          <Link className="navbar-brand" to="/">Jobs</Link>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+              <li className="nav-item">
+                <Link className="nav-link" to="/FreelanceJobs">Freelance</Link>
+              </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/About">About</Link>
               </li>
@@ -50,7 +55,9 @@ import About from './About';
       {/* Routes */}
       <Routes>
         <Route exact path="/" element={<Home />} />
+        <Route exact path="/FreelanceJobs" element={<FreelanceJobs />} />
         <Route path="/about" element={<About />} />
+        <Route path="/jobDetails" element={<JobDetails />} />
       </Routes>
     </Router>
     <br />

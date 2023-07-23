@@ -1,7 +1,9 @@
 import React from 'react'
+import '../App.css'
 
 function About() {
   return (
+    <>
     <div className="container mt-5">
       <div className="row justify-content-center">
         <div className="col-md-8">
@@ -44,6 +46,7 @@ function About() {
         <p>Phone: 123-456-7890</p>
       </div>
     </div>
+    </>
   );
 }
 
