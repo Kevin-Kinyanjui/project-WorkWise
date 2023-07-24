@@ -4,6 +4,7 @@ import Home from './Home';
 import FreelanceJobs from './FreelanceJobs';
 import About from './About';
 import JobDetails from './JobDetails';
+import Apply from './Apply';
 
  function Navbar() {
   return (
@@ -57,6 +58,7 @@ import JobDetails from './JobDetails';
         <Route exact path="/" element={<Home />} />
         <Route exact path="/FreelanceJobs" element={<FreelanceJobs />} />
         <Route path="/about" element={<About />} />
+        <Route path="/Apply" element={<Apply />} />
         <Route path="/jobDetails" element={<JobDetails />} />
       </Routes>
     </Router>

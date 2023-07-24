@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Apply from './Apply'
 
 function JobDetails({ jobId, setCurrJob }) {
   const [job, setJob] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch(`http://localhost:9292/jobs/${jobId}`)
@@ -33,8 +37,37 @@ function JobDetails({ jobId, setCurrJob }) {
 
 const splitRequirements = job.requirements.split('. ');
 
-  function handleClick() {
-    alert('Resume downloaded!');
+  function handleClick(param) {
+    if (param === "apply") {
+      navigate('/Apply');
+    } else if (param === "download") {
+      alert('Resume downloaded');
+    } else {
+      alert('Click!')
+    }
+  }
+
+  function deleteApplication(id){
+    fetch(`http://localhost:9292/applications/${id}`, {
+      method: 'DELETE',
+    }).then((response) => response.json())
+    .then((data) => {
+      if (data.success) {
+        console.log(data.message);
+      } else {
+        console.log(data.message);
+      }
+    })
+    .catch((error) => {
+      console.error('Error deleting application:', error);
+    });
+  }
+
+  function deleteJob(id) {
+    fetch(`http://localhost:9292/jobs/${id}`, {
+      method: 'DELETE',
+    });
+    navigate('/');
   }
 
   return (
@@ -63,20 +96,20 @@ const splitRequirements = job.requirements.split('. ');
               <br />
               <h5 className="card-subtitle mb-3"><i>Applicants:</i></h5>
               <ul className="list-group">
-                {job.applicants.map(applicant => (
-                  <li key={applicant.applicant_id} className="list-group-item">
+                {job.applicants.map( ( applicant, index) => (
+                  <li key={index} className="list-group-item">
                     <div>
                       <h6>Name: </h6> <p> {applicant.applicant_name}</p>
                       <h6>Email: </h6> <p> {applicant.applicant_email}</p>
                     </div>
                     <div className="d-flex justify-content-center mt-3">
-                      <button onClick={() => handleClick()} className="btn btn-primary btn-sm me-2">
+                      <button onClick={() => handleClick("edit")} className="btn btn-primary btn-sm me-2">
                         Edit Application.
                       </button>
-                      <button onClick={() => handleClick()} className="btn btn-primary btn-sm me-2">
+                      <button onClick={() => handleClick("download")} className="btn btn-primary btn-sm me-2">
                         Download Resume
                       </button>
-                      <button onClick={() => handleClick()} className="btn btn-warning btn-sm me-2">
+                      <button onClick={() => deleteApplication(applicant.application_id)} className="btn btn-warning btn-sm me-2">
                         Delete Application.
                       </button>
                     </div>
@@ -88,9 +121,10 @@ const splitRequirements = job.requirements.split('. ');
         </div>
       </div>
     </div>
+    <div><Apply jobId={jobId}/></div>
     <div className="d-flex justify-content-end mt-3">
-            <button className="btn btn-primary me-2" onClick={() => handleClick()}> Apply </button>
-            <button className="btn btn-danger me-2" onClick={() => handleClick()}> Delete Job </button>
+            {/* <button className="btn btn-primary me-2" onClick={() => handleClick("Apply")}> Apply </button> */}
+            <button className="btn btn-danger me-2" onClick={() => deleteJob(jobId)}> Delete Job </button>
             <button className="btn btn-primary" onClick={() => setCurrJob(null)}> Back </button>
     </div>
     </>
