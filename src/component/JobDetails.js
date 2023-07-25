@@ -4,6 +4,7 @@ import Apply from './Apply'
 
 function JobDetails({ jobId, setCurrJob }) {
   const [job, setJob] = useState(null);
+  let [message, setMessage] = useState('')
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -20,6 +21,7 @@ function JobDetails({ jobId, setCurrJob }) {
       .then((jsonData) => {
         setJob(jsonData);
         setLoading(false);
+        setMessage(jsonData.message);
       })
       .catch((error) => {
         setError(error);
@@ -38,8 +40,8 @@ function JobDetails({ jobId, setCurrJob }) {
 const splitRequirements = job.requirements.split('. ');
 
   function handleClick(param) {
-    if (param === "apply") {
-      navigate('/Apply');
+    if (param === "ap") {
+      navigate('/');
     } else if (param === "download") {
       alert('Resume downloaded');
     } else {
@@ -57,6 +59,7 @@ const splitRequirements = job.requirements.split('. ');
       } else {
         console.log(data.message);
       }
+      setMessage(data.message)
     })
     .catch((error) => {
       console.error('Error deleting application:', error);
@@ -77,6 +80,7 @@ const splitRequirements = job.requirements.split('. ');
         <div className="col-md-8 offset-md-2">
           <div className="card">
             {/* <img src={job.imageUrl} className="card-img-top" alt="Job" /> */}
+            {message && <div className="alert alert-info">{message}</div>}
             <div className="card-body">
               <h5 className="card-title">{job.title}</h5>
               <p className="card-text">{job.description}</p>

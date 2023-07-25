@@ -41,14 +41,21 @@ function AuthComponent() {
       });
   }
 
+  function handleLogout() {
+    fetch('http://localhost:9292/users/logout').then(() => setMessage('Logged out succesfully'))
+    setUsername("");
+    setPassword("");
+  }
+
   return (
+    <>
     <div className="container mt-5">
       <div className="row justify-content-center">
         <div className="col-md-6">
           <div className="card">
             <div className="card-body">
               <h5 className="card-title">{isLogin ? 'Login' : 'Register'}</h5>
-              {message && <div className="alert alert-warning">{message}</div>}
+              {message && <div className="alert alert-info">{message}</div>}
               <form onSubmit={handleAuthSubmit}>
                 <div className="form-group">
                   <label htmlFor="username">Username</label>
@@ -119,6 +126,12 @@ function AuthComponent() {
         </div>
       </div>
     </div>
+    <div class="d-flex justify-content-end me-3">
+      <button onClick={handleLogout} className="btn btn-primary">
+        Logout
+      </button>
+    </div>
+    </>
   );
 }
 

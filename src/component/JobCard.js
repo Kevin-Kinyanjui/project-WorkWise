@@ -3,7 +3,6 @@ import React from 'react';
 function JobCard({ job, setCurrJob }) {
 
   function handleClick(id) {
-    console.log(id);
     setCurrJob(id);
   }
 

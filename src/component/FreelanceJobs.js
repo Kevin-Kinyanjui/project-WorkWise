@@ -44,7 +44,7 @@ function FreelanceJobs() {
     <div className="container">
       <div className="row">
         { currJob? <JobDetails jobId={currJob} setCurrJob={setCurrJob} /> : jobs.map((job) => (
-          <JobCard key={job.id} job={job} setCurrJob={handleClick}/>
+          <JobCard key={job.id} job={job}  setCurrJob={handleClick}/>
         ))}
       </div>
     </div>

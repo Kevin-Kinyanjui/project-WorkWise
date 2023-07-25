@@ -25,32 +25,24 @@ import AuthComponent from './AuthComponent';
               <li className="nav-item">
                 <Link className="nav-link" to="/About">About</Link>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="#">More</Link>
-              </li>
               {/* Dropdown Link */}
               <li className="nav-item dropdown">
                 <Link className="nav-link dropdown-toggle" to="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Dropdown
+                  &#129333;
                 </Link>
                 {/* Dropdown Menu */}
                 <ul className="dropdown-menu">
-                  <li><Link className="dropdown-item" to="#">Action</Link></li>
-                  <li><Link className="dropdown-item" to="#">Another action</Link></li>
-                  <li><hr className="dropdown-divider" /></li>
-                  <li><Link className="dropdown-item" to="#">Something else here</Link></li>
+                  <li><Link className="dropdown-item" to="#">Dashboard</Link></li>
+                  <li><Link className="dropdown-item" to="/Authentication">Login</Link></li>
+                  {/* <li><hr className="dropdown-divider" /></li>
+                  <li><Link className="dropdown-item" to="#">Something else here</Link></li> */}
                 </ul>
-              </li>
-              {/* Disabled Link */}
-              <li className="nav-item">
-                <Link className="nav-link disabled" to="#">Disabled</Link>
               </li>
             </ul>
             {/* Search Form */}
             <form className="d-flex" role="search">
-              {/* <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" /> */}
-              {/* <button className="btn btn-outline-success" type="submit">Search</button> */}
-              <Link className="btn btn-outline-success" to="/Authentication">Login</Link>
+              <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+              <button className="btn btn-outline-success" type="submit">Search</button>
             </form>
           </div>
         </div>
