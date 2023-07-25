@@ -10,7 +10,6 @@
 
 # production
 /build
-/workwise-server
 
 # misc
 .DS_Store
