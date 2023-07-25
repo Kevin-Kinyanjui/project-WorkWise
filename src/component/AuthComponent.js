@@ -17,10 +17,10 @@ function AuthComponent() {
     let body;
 
     if (isLogin) {
-      endpoint = '/users/login';
+      endpoint = 'http://localhost:9292/users/login';
       body = JSON.stringify({ username, password });
     } else {
-      endpoint = '/users/register';
+      endpoint = 'http://localhost:9292/users/register';
       body = JSON.stringify({ username, password, email, role });
     }
 
@@ -48,7 +48,7 @@ function AuthComponent() {
           <div className="card">
             <div className="card-body">
               <h5 className="card-title">{isLogin ? 'Login' : 'Register'}</h5>
-              {message && <div className="alert alert-danger">{message}</div>}
+              {message && <div className="alert alert-warning">{message}</div>}
               <form onSubmit={handleAuthSubmit}>
                 <div className="form-group">
                   <label htmlFor="username">Username</label>
@@ -102,6 +102,7 @@ function AuthComponent() {
                     </div>
                   </>
                 )}
+                <br />
                 <button type="submit" className="btn btn-primary">
                   {isLogin ? 'Login' : 'Register'}
                 </button>

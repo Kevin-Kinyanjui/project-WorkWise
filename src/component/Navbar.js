@@ -1,10 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Home from './Home';
-import FreelanceJobs from './FreelanceJobs';
 import About from './About';
-import JobDetails from './JobDetails';
 import Apply from './Apply';
+import JobDetails from './JobDetails';
+import FreelanceJobs from './FreelanceJobs';
+import AuthComponent from './AuthComponent';
 
  function Navbar() {
   return (
@@ -47,8 +48,9 @@ import Apply from './Apply';
             </ul>
             {/* Search Form */}
             <form className="d-flex" role="search">
-              <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-              <button className="btn btn-outline-success" type="submit">Search</button>
+              {/* <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" /> */}
+              {/* <button className="btn btn-outline-success" type="submit">Search</button> */}
+              <Link className="btn btn-outline-success" to="/Authentication">Login</Link>
             </form>
           </div>
         </div>
@@ -60,6 +62,7 @@ import Apply from './Apply';
         <Route path="/about" element={<About />} />
         <Route path="/Apply" element={<Apply />} />
         <Route path="/jobDetails" element={<JobDetails />} />
+        <Route path="/Authentication" element={<AuthComponent />} />
       </Routes>
     </Router>
     <br />
