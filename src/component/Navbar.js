@@ -4,6 +4,7 @@ import Home from './Home';
 import About from './About';
 import Apply from './Apply';
 import JobDetails from './JobDetails';
+import Dashboard from './Dashboard';
 import FreelanceJobs from './FreelanceJobs';
 import AuthComponent from './AuthComponent';
 
@@ -32,7 +33,7 @@ import AuthComponent from './AuthComponent';
                 </Link>
                 {/* Dropdown Menu */}
                 <ul className="dropdown-menu">
-                  <li><Link className="dropdown-item" to="#">Dashboard</Link></li>
+                  <li><Link className="dropdown-item" to="/Dashboard">Dashboard</Link></li>
                   <li><Link className="dropdown-item" to="/Authentication">Login</Link></li>
                   {/* <li><hr className="dropdown-divider" /></li>
                   <li><Link className="dropdown-item" to="#">Something else here</Link></li> */}
@@ -53,6 +54,7 @@ import AuthComponent from './AuthComponent';
         <Route exact path="/FreelanceJobs" element={<FreelanceJobs />} />
         <Route path="/about" element={<About />} />
         <Route path="/Apply" element={<Apply />} />
+        <Route path="/Dashboard" element={<Dashboard />} />
         <Route path="/jobDetails" element={<JobDetails />} />
         <Route path="/Authentication" element={<AuthComponent />} />
       </Routes>

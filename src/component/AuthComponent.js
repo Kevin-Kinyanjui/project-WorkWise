@@ -126,7 +126,7 @@ function AuthComponent() {
         </div>
       </div>
     </div>
-    <div class="d-flex justify-content-end me-3">
+    <div className="d-flex justify-content-end me-3">
       <button onClick={handleLogout} className="btn btn-primary">
         Logout
       </button>
